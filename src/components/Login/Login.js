@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 import logo from "../../assets/images/logo.png";
 import Title from "../Title/Title";
@@ -10,7 +11,9 @@ export default function Login() {
         <div className="loginContainer">
             <img src={logo} />
             <Title />
-            <StartButton />
+            <Link to="/gamescreen">
+                <StartButton />
+            </Link>
         </div>
     );
 }
