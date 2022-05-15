@@ -5,6 +5,7 @@ import "../assets/styles/reset.css";
 import "../assets/styles/styles.css";
 import Login from "./Login/Login";
 import GameScreen from "./GameScreen/GameScreen";
+import QuestionBox from "./QuestionBox/QuestionBox";
 
 
 const deck = [
@@ -35,8 +36,12 @@ const deck = [
     {
         question: "Para que servem as props?",
         answer: "Para passar informações entre componentes"
+    },
+    {
+        question: "que dia é hoje?",
+        answer: "Domingo"
     }
-]
+];
 
 
 
@@ -45,7 +50,11 @@ export default function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login />} />
-                <Route path="/gamescreen" element={<GameScreen />} />
+                <Route path="/gamescreen" element={
+                    <GameScreen>
+                        {deck.map((obj,index) => <QuestionBox index={index+1} />)}
+                    </GameScreen>
+                } />
             </Routes>
         </BrowserRouter>
     );

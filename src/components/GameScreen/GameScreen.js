@@ -19,12 +19,14 @@ function ProgressBar(props) {
     );    
 }
 
-export default function GameScreen() {
+export default function GameScreen(props) {
     return(
         <>
             <TopLogo />
+            <div className="questionContainer">
+                {props.children}
+            </div>
             <ProgressBar numerator="0" denominator="4" />
-            <QuestionBox index="1" />
         </>
     );
 }
