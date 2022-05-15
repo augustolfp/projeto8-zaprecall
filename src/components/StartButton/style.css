@@ -1,0 +1,11 @@
+.startButton {
+    font-family: 'Recursive', sans-serif;
+    font-size: 18px;
+    color:#D70900;
+    background-color: white;
+    width: 246px;
+    height: 54px;
+    border: 1px solid #D70900;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
