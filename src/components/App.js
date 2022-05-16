@@ -46,6 +46,7 @@ const deck = [
 export default function App() {
 
     const [estado, setEstado] = React.useState(Array(deck.length).fill(null));
+    const [contador, setContador] = React.useState(0);
 
     function HandleClick(index,score) {
         if(estado[index]===null) {
@@ -55,7 +56,14 @@ export default function App() {
             setEstado(estado.map((elemento, i) => i===index? "showAnswer" : elemento));
         }
         if(estado[index]==="showAnswer") {
+            setContador(contador+1);
             setEstado(estado.map((elemento, i) => i===index? score : elemento));
+        }
+    }
+
+    function CheckGameState() {
+        if(contador===estado.length) {
+            console.log("cabou")
         }
     }
 
@@ -64,7 +72,10 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/gamescreen" element={
-                    <GameScreen denominator={estado.length} numerator={estado.filter(question => (question==="noPoint" || question==="halfPoint" || question==="fullPoint")).length}>
+                    <GameScreen 
+                        denominator={estado.length} 
+                        numerator={contador}>
+
                         {deck.map((question, index) => <QuestionBox 
                         index={index} 
                         question={question} 
@@ -74,6 +85,7 @@ export default function App() {
                         halfPoint={() => HandleClick(index, "halfPoint")}
                         fullPoint={() => HandleClick(index,"fullPoint")}
                         />)}
+                        {CheckGameState()}
                     </GameScreen>
                 } />
             </Routes>
