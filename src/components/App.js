@@ -43,8 +43,6 @@ const deck = [
     }
 ];
 
-
-
 export default function App() {
     return(
         <BrowserRouter>
@@ -52,7 +50,7 @@ export default function App() {
                 <Route path="/" element={<Login />} />
                 <Route path="/gamescreen" element={
                     <GameScreen>
-                        {deck.map((obj,index) => <QuestionBox index={index+1} />)}
+                        {deck.map(() => <QuestionBox index="1" />)}
                     </GameScreen>
                 } />
             </Routes>
