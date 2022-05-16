@@ -9,7 +9,7 @@ export default function GameScreen(props) {
             <div className="questionContainer">
                 {props.children}
             </div>
-            <ProgressBar numerator="0" denominator="4" />
+            <ProgressBar numerator={props.numerator} denominator={props.denominator} />
         </>
     );
 }

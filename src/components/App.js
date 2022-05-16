@@ -61,7 +61,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/gamescreen" element={
-                    <GameScreen>
+                    <GameScreen denominator={estado.length} numerator={estado.filter(elemento => elemento==="showAnswer").length}>
                         {deck.map((question, index) => <QuestionBox index={index} question={question} estado={estado[index]} onClick={() => HandleClick(index)} />)}
                     </GameScreen>
                 } />

@@ -5,7 +5,7 @@ export default function QuestionBox(props) {
         return(
             <div className="closedQuestion" onClick={props.onClick}>
                 <div>
-                    <span>Pergunta {props.index}</span>
+                    <span>Pergunta {props.index + 1}</span>
                     <PlayOutline width="20px" />
                 </div>
             </div>
