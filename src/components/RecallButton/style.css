@@ -1,0 +1,10 @@
+.recallButton {
+    width: 84px;
+    height: 36px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-family: 'Recursive', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+}

@@ -47,13 +47,17 @@ export default function App() {
 
     const [estado, setEstado] = React.useState(Array(deck.length).fill(null));
 
-    function HandleClick(index) {
+    function HandleClick(index,score) {
         if(estado[index]===null) {
             setEstado(estado.map((elemento, i) => i===index? "showQuestion" : elemento));
         }
         if(estado[index]==="showQuestion") {
             setEstado(estado.map((elemento, i) => i===index? "showAnswer" : elemento));
         }
+        if(estado[index]==="showAnswer") {
+            setEstado(estado.map((elemento, i) => i===index? score : elemento));
+        }
+        console.log(estado)
     }
 
     return(
@@ -62,7 +66,15 @@ export default function App() {
                 <Route path="/" element={<Login />} />
                 <Route path="/gamescreen" element={
                     <GameScreen denominator={estado.length} numerator={estado.filter(elemento => elemento==="showAnswer").length}>
-                        {deck.map((question, index) => <QuestionBox index={index} question={question} estado={estado[index]} onClick={() => HandleClick(index)} />)}
+                        {deck.map((question, index) => <QuestionBox 
+                        index={index} 
+                        question={question} 
+                        estado={estado[index]} 
+                        onClick={() => HandleClick(index)} 
+                        noPoint={() => HandleClick(index,"noPoint")} 
+                        halfPoint={() => HandleClick(index, "halfPoint")}
+                        fullPoint={() => HandleClick(index,"fullPoint")}
+                        />)}
                     </GameScreen>
                 } />
             </Routes>
