@@ -6,6 +6,7 @@ import "../assets/styles/styles.css";
 import Login from "./Login/Login";
 import GameScreen from "./GameScreen/GameScreen";
 import QuestionBox from "./QuestionBox/QuestionBox";
+import ProgressBar from "./ProgressBar/ProgressBar";
 
 
 const deck = [
@@ -63,7 +64,10 @@ export default function App() {
 
     function CheckGameState() {
         if(contador===estado.length) {
-            console.log("cabou")
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
@@ -72,10 +76,8 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/gamescreen" element={
-                    <GameScreen 
-                        denominator={estado.length} 
-                        numerator={contador}>
-
+                    <>
+                    <GameScreen>
                         {deck.map((question, index) => <QuestionBox 
                         index={index} 
                         question={question} 
@@ -85,8 +87,10 @@ export default function App() {
                         halfPoint={() => HandleClick(index, "halfPoint")}
                         fullPoint={() => HandleClick(index,"fullPoint")}
                         />)}
-                        {CheckGameState()}
                     </GameScreen>
+                    <ProgressBar numerator={contador} denominator={estado.length} gameState={CheckGameState()} estado={estado}>
+                    </ProgressBar>
+                    </>
                 } />
             </Routes>
         </BrowserRouter>
