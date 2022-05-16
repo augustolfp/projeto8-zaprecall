@@ -57,7 +57,6 @@ export default function App() {
         if(estado[index]==="showAnswer") {
             setEstado(estado.map((elemento, i) => i===index? score : elemento));
         }
-        console.log(estado)
     }
 
     return(
@@ -65,7 +64,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/gamescreen" element={
-                    <GameScreen denominator={estado.length} numerator={estado.filter(elemento => elemento==="showAnswer").length}>
+                    <GameScreen denominator={estado.length} numerator={estado.filter(question => (question==="noPoint" || question==="halfPoint" || question==="fullPoint")).length}>
                         {deck.map((question, index) => <QuestionBox 
                         index={index} 
                         question={question} 
