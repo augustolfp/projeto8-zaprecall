@@ -44,16 +44,28 @@ const deck = [
 ];
 
 export default function App() {
+
+    const [estado, setEstado] = React.useState(Array(deck.length).fill(null));
+
+    function HandleClick(index) {
+        if(estado[index]===null) {
+            setEstado(estado.map((elemento, i) => i===index? "showQuestion" : elemento));
+        }
+        if(estado[index]==="showQuestion") {
+            setEstado(estado.map((elemento, i) => i===index? "showAnswer" : elemento));
+        }
+    }
+
     return(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/gamescreen" element={
                     <GameScreen>
-                        {deck.map(() => <QuestionBox index="1" />)}
+                        {deck.map((question, index) => <QuestionBox index={index} question={question} estado={estado[index]} onClick={() => HandleClick(index)} />)}
                     </GameScreen>
                 } />
             </Routes>
         </BrowserRouter>
     );
-}
+}   
