@@ -1,4 +1,6 @@
 import "./style.css"
+import SadFace from "../../assets/images/sad.png";
+import PartyFace from "../../assets/images/party.png"
 
 export default function ProgressBar(props) {
 
@@ -24,8 +26,12 @@ export default function ProgressBar(props) {
         return(
             <>
             <div className="progressBar">
-                <div>
-                    Parabéns!!!!
+                <div className="titleResult">
+                    <img src={PartyFace} />
+                    Parabéns!
+                </div>
+                <div className="resultDescription">
+                    Você não esqueceu de nenhum flashcard!
                 </div>
                 {props.numerator}/{props.denominator} CONCLUÍDOS
             </div>
@@ -36,8 +42,12 @@ export default function ProgressBar(props) {
         return(
             <>
             <div className="progressBar">
-                <div>
-                    Precisa treinar mais!!!!
+                <div className="titleResult">
+                    <img src={SadFace} />
+                    Putz...
+                </div>
+                <div className="resultDescription">
+                    Ainda faltam alguns...Mas não desanime!
                 </div>
                 {props.numerator}/{props.denominator} CONCLUÍDOS
             </div>
