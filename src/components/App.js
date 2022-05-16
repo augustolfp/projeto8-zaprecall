@@ -8,8 +8,11 @@ import GameScreen from "./GameScreen/GameScreen";
 import QuestionBox from "./QuestionBox/QuestionBox";
 import ProgressBar from "./ProgressBar/ProgressBar";
 
+function ShuffleCards() { 
+	return Math.random() - 0.5; 
+}
 
-const deck = [
+const preDeck = [
     {
         question: "O que é JSX?",
         answer: "Uma extensão de linguagem do JavaScript"
@@ -43,6 +46,8 @@ const deck = [
         answer: "Domingo"
     }
 ];
+
+const deck = preDeck.sort(ShuffleCards);
 
 export default function App() {
 
