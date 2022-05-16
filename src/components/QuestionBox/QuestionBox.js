@@ -1,5 +1,6 @@
 import "./style.css";
 import { PlayOutline } from 'react-ionicons'
+import { RepeatOutline } from 'react-ionicons'
 export default function QuestionBox(props) {
     if(props.estado===null) {
         return(
@@ -13,10 +14,12 @@ export default function QuestionBox(props) {
     }
     if(props.estado==="showQuestion") {
         return(
-            <div className="closedQuestion" onClick={props.onClick}>
+            <div className="openQuestion" onClick={props.onClick}>
                 <div>
                     <span>{props.question.question}</span>
-                    <PlayOutline width="20px" />
+                    <div className="iconContainer">
+                        <RepeatOutline width="20px" />
+                    </div>
                 </div>
             </div>
         );
